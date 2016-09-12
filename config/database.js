@@ -7,5 +7,6 @@ module.exports = {
         'password': 'root'
     },
     'database': 'example_auth',
-    'users_table': 'users'
+    'users_table': 'users',
+    'customers_table': 'customers'
 };

@@ -1,0 +1,65 @@
+<!-- views/index.ejs -->
+<!doctype html>
+<html>
+<head>
+	<title>Node Authentication</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+	<style>
+		body 		{ padding-top:80px; }
+	</style>
+</head>
+<body>
+<div class="container">
+	<div class="page-header text-center">
+			<h1><span class="fa fa-anchor"></span> Clienti Page</h1>
+			<a href="/profile" class="btn btn-default btn-sm">Inapoi</a>
+			<a href="/logout" class="btn btn-default btn-sm">Logout</a>
+	</div>
+
+   <div class="data-btn">
+     <button onClick="addUser();">+ Add</button>
+   </div>
+   <div class="data-table">
+      <table border="1" cellpadding="7" cellspacing="7">
+          <tr>
+              <th width="50px">No</th>
+              <th>Name</th>
+              <th>Address</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th width="120px">Action</th>
+          </tr>
+
+          <% if(data.length){
+
+           for(var i = 0;i < data.length;i++) { %>
+
+          <tr>
+              <td><%=(i+1)%></td>
+              <td><%=data[i].name%></td>
+              <td><%=data[i].address%></td>
+              <td><%=data[i].phone%></td>
+              <td><%=data[i].email%></td>
+              <td>
+                  <a class="a-inside edit" href="../customers/edit/<%=data[i].id%>">Edit</a>
+
+                  <a class="a-inside delete" href="../customers/delete/<%=data[i].id%>">Delete</a>
+
+              </td>
+          </tr>
+      <% }
+
+       }else{ %>
+           <tr>
+              <td colspan="3">No user</td>
+           </tr>
+      <% } %>
+
+
+
+      </table>
+   </div>
+  </div>
+</body>
+</html>

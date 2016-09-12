@@ -18,8 +18,17 @@ CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.users_table + '` ( \
     UNIQUE INDEX `username_UNIQUE` (`username` ASC) \
 )');
 
-//..some more db creates
+connection.query('\
+CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.customers_table + '` (\
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,\
+  `name` varchar(200) NOT NULL,\
+  `address` text NOT NULL,\
+  `email` varchar(200) NOT NULL,\
+  `phone` varchar(20) NOT NULL,\
+  PRIMARY KEY (`id`)\
+) ');
 
+//..some more db creates
 
 console.log('Success: Database Created!');
 

@@ -1,3 +1,8 @@
+var mysql = require('mysql');
+var bcrypt = require('bcrypt-nodejs');
+var dbconfig = require('../config/database');
+var connection = mysql.createConnection(dbconfig.connection);
+
 module.exports = function(app, passport) {
 
     //home page
@@ -52,6 +57,19 @@ module.exports = function(app, passport) {
     app.get('/logout', function(req, res) {
         req.logout();
         res.redirect('/');
+    });
+
+    app.get('/customers', isLoggedIn, function(req, res){
+      connection.query('USE ' + dbconfig.database);
+
+      connection.query('SELECT * FROM customers',function(err,rows)
+      {
+          if(err)
+              console.log("Error Selecting : %s ",err );
+
+             console.log(rows);
+          res.render('customers',{page_title:"Customers - Node.js",data:rows});
+       });
     });
 
     //verify if user is logged on

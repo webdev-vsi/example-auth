@@ -10,11 +10,11 @@ var port = process.env.PORT || 9000;
 var passport = require('passport');
 var flash = require('connect-flash');
 
-
+//var customers  = require('./app/customers');
 // configuration
 // connect to our database
 
-
+//var customers = require('./app/customers');
 require('./config/passport')(passport);
 
 //set up express application
@@ -42,6 +42,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes
 require('./app/routes.js')(app, passport); // load routes
+
 
 //launch
 
